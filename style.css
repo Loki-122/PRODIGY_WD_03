@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Futura';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #fff;
+    color: #9D7EB1;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #9D7EB1;
+    text-shadow: 0 0 5px #9D7EB1;
+}
+
+.game-container {
+    text-align: center;
+    width: 350px;
+    background: #fff;
+    padding: 20px;
+}
+
+
+.game-board {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #9D7EB1;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+/* Add borders selectively */
+.cell {
+    border: 0;
+    border-top: 2px solid #9D7EB1; /* Top border */
+    border-left: 2px solid #9D7EB1; /* Left border */
+}
+
+/* Remove unnecessary borders for outer edges */
+.cell:nth-child(-n+3) { /* Top row cells */
+    border-top: none;
+}
+.cell:nth-child(3n) { /* Right column cells */
+    border-right: none;
+}
+.cell:nth-child(3n + 1) { /* Left column cells */
+    border-left: none;
+}
+.cell:nth-last-child(-n+3) { /* Bottom row cells */
+    border-bottom: none;
+}
+
+/* Removed Hover Effects */
+/* No hover effect is applied to the cells anymore */
+
+/* Controls */
+.controls {
+    margin-top: 20px;
+    display: block;
+}
+
+.status {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #9D7EB1;
+    text-shadow: 0 0 5px #9D7EB1;
+}
+
+button {
+    padding: 10px 20px;
+    background: #fff;
+    color: #9D7EB1;
+    border: 2px solid #9D7EB1;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: #9D7EB1;
+    color: #000000;
+    transform: translateY(-3px);
+}
+
+/* Winning Message and Trophy */
+.winning-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #9D7EB1;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    display: none;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.trophy {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Trophy_icon.svg/512px-Trophy_icon.svg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: trophyZoom 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes trophyZoom {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
